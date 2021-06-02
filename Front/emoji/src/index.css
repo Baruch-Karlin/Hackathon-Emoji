@@ -40,7 +40,10 @@
   background-color: #7d498e;
   border-color: #7d498e;
 }
-
+.btn-primary:focus {
+  background-color: #7d498e;
+  border-color: #7d498e;
+}
 .btn:active {
   background-color: #7d498e;
   border-color: #7d498e;
