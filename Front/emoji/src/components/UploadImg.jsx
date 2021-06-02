@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ImageUploading from "react-images-uploading";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const UploadImg = () => {
   const [images, setImages] = useState([]);
@@ -32,32 +33,32 @@ const UploadImg = () => {
           dragProps,
         }) => (
           <div className="upload__image-wrapper">
-            <button
+            <Button
               style={isDragging ? { color: "red" } : null}
               onClick={onImageUpload}
               {...dragProps}
             >
               Click or Drop here
-            </button>
+            </Button>
             {imageList.length !== 0 && (
               <Link to="result">
-                <button
+                <Button
                   renderas="button"
                   onClick={() => {
                     onSend(imageList[0]);
                   }}
                 >
                   Send
-                </button>
+                </Button>
               </Link>
             )}
             &nbsp;
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
-                <img src={image.data_url} alt="" width="100" />
+                <img src={image.data_url} alt="" width="300" className="p-2" />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <Button onClick={() => onImageUpdate(index)}>Update</Button>
+                  <Button onClick={() => onImageRemove(index)}>Remove</Button>
                 </div>
               </div>
             ))}
