@@ -8,26 +8,28 @@ import Result from "./components/Result";
 
 function App() {
   return (
-    <Router>
-      <Navigation />
-      <Switch>
-        <Route exact path="/">
-          <Welcome />
-        </Route>
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
-        <Route path="/upload">
-          <Upload />
-        </Route>
-        <Route path="/prev_results">
-          <PrevResults />
-        </Route>
-        <Route path="/result">
-          <Result />
-        </Route>
-      </Switch>
-    </Router>
+    <div>
+      <Router>
+        <Navigation />
+        <Switch>
+          <Route exact path="/">
+            <Welcome />
+          </Route>
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Route path="/upload">
+            <Upload />
+          </Route>
+          <Route path="/prev_results">
+            <PrevResults />
+          </Route>
+          <Route path="/result">
+            <Result />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
