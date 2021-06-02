@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     res.send(`Hello world from local`);
 });
 
+app.use("/pictures", require("./routes/pictures/pictures"));
+app.use("/emoji", require("./routes/emoji/emoji"));
+
+
 
 const port = 5050;
 const host = '127.0.0.1'
