@@ -12,6 +12,8 @@ app.get('/', (req, res) => {
 });
 
 app.use("/pictures", require("./routes/pictures/pictures"));
+app.use("/emoji", require("./routes/emoji/emoji"));
+
 
 
 const port = 5050;
