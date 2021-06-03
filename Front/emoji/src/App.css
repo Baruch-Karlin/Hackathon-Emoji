@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.root {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.capture {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  padding: 10px;
+  transform: translateX(-50%);
+  
+}
+
+.capture:hover {
+  cursor: pointer;
+}
+
+.capture__btn {
+  background-color: #fff;  
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.capture__btn:after {
+  display: block;
+  content: '';
+  border: 2px solid white;
+  border-radius: 50%;
+  height: 102%;
+  width: 102%;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+    
+}
+
+.camera {
+  height: 70%;
+}
+
+.camera__inner { /* main on resp */
+  padding-top: 10px;
+  width: 100%;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#video-stream video {
+  width: 100%;
+}
+
+.my-webcam-class {
+  display: block;
+  
+  width: 100%;
+  height: 100%;
+}
+
+.emojies {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.emojies_text {
+  position: absolute;
+  top: -14px;
+  text-align: left;
+  display: none;
+  height: 0;
+}
+
+.btns {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.btns__row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 768px) {
+  .btns__row {
+    max-width: 500px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .btns {
+    gap: auto;
   }
+}
+
+.btns img {
+  display: block;
+  width: 3.8rem;
+  padding: 0.5rem;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  z-index: 100;
+  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.counter {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.hover_menu {
+  position: absolute;
 }
