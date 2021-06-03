@@ -13,10 +13,11 @@ app.get('/', (req, res) => {
 
 app.use("/pictures", require("./routes/pictures/pictures"));
 app.use("/emoji", require("./routes/emoji/emoji"));
+app.use("/images", require("./routes/images/images"));
 
 
 
-const port = 5050;
+const port = 3003;
 const host = '127.0.0.1'
 const db_url = 'mongodb+srv://emoji:emoji@cluster0.0ykin.mongodb.net/emoji?retryWrites=true&w=majority';
 

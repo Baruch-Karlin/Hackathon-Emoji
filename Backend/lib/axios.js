@@ -1,11 +1,15 @@
 const axios = require('axios');
 
-const dsUrl = 'http://0.0.0.0:3000/classify'
+const dsUrl = 'http://172.16.1.70:3333/predict'
 
 const classify = async (url) => {
-    const response = await axios.post(
+    const response = await axios.get(
         `${dsUrl}`,
-        { url }
+        {
+            params: {
+                url: url
+            }
+        }
     );
     return response.data;
 }

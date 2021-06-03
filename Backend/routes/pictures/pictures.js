@@ -34,12 +34,12 @@ router.post('/',
             let arrayOfUrls = []
             console.log('enter')
             const result = await uploadToCloudinary(req.file.path)
+            console.log(req.file.path)
             if (result) {
                 const picture = new Picture({
                     _id: new mongoose.Types.ObjectId(),
                     url: result.secure_url
                 })
-                console.log(picture)
                 await picture.save();
 
                 //this is the real function 
