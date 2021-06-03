@@ -22,14 +22,14 @@ app.use(cors({ origin: true }));
 const upload = multer({ dest: dest });
 const type = upload.single('upl');
 
-
 app.post('/images', type, async (req, res) => {
   try {
     const path = dest + 'file.jpg'
-    console.log(path)
+    console.log('path', path)
     const picture = await base64_decode(req.body.file, path)
+    console.log('picture', picture)
     const result = await uploadToCloudinary('public/uploads/file.jpg')
-    console.log(result)
+    console.log('result', result)
 
     if (result) {
       const picture = new Picture({
@@ -37,16 +37,25 @@ app.post('/images', type, async (req, res) => {
         url: result.secure_url
       })
 
-      console.log(picture)
+      console.log('picture2', picture)
       const db = await picture.save();
       console.log(db)
-
-      const arrayOfIds = await classify(result.secure_url)
-      console.log(arrayOfIds)
-      res.status(200).send(arrayOfIds)
+      if (!result.secure_url) {
+        res.status(400).send("no picture uploaded")
+      } else {
+        const arrayOfIds = await classify(result.secure_url)
+        console.log(arrayOfIds)
+        res.status(200).send({
+          result:
+          {
+            arrayOfIds: arrayOfIds,
+            url: result.secure_url
+          }
+        })
+      }
     }
-  } catch {
-
+  } catch (err) {
+    console.log(err);
   }
 })
 
