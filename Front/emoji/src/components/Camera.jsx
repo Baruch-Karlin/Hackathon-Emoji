@@ -2,9 +2,19 @@ import React from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
 import Emoji from "./Emoji";
+import { useState } from 'react'
+
+
 
 const Camera = () => {
   const webcamRef = React.useRef(null);
+  const [pic, setPic] = useState(null)
+
+
+  const onClosePicture = () => {
+    setPic(null)
+  }
+
 
   const capture = React.useCallback(() => {
     const file = webcamRef.current.getScreenshot();
@@ -22,7 +32,8 @@ const Camera = () => {
     axios
       .post(URL, data, config)
       .then((response) => {
-        console.log("response", response);
+        console.log("response", response.data.result.url);
+        setPic(response.data.result.url);
       })
       .catch((error) => {
         console.log("error", error);
@@ -32,7 +43,15 @@ const Camera = () => {
   return (
     <div className="root">
       <div className="camera">
-        <div className="container">
+
+        {pic ? (
+          <div className="container">
+            <div
+              onClick={onClosePicture}
+              style={{ backgroundColor: 'black', height: '100px', width: '100px', position: 'absolute', right: '0px' }}></div>
+            <img src={pic}></img>
+          </div>
+        ) : (<div className="container">
           <div className="camera__inner">
             <div className="main">
               <div id="video-stream">
@@ -53,11 +72,13 @@ const Camera = () => {
               </div>
               <div className="capture" onClick={capture}>
                 <div className="capture__btn">
-                </div> 
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>)
+        }
+
         <Emoji />
       </div>
     </div>
